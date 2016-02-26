@@ -134,7 +134,7 @@ void printNum(char num, char num2, int place){ //Switch statements for all of th
 	}
 }
 
-int wordstonum(char *word){
+int wordsToNum(char *word){
 	char *token;
 	char *args[40];
 	int i=0;
@@ -253,4 +253,8 @@ int wordNumLite(char *conv){ //Switch statements containing all of the possible 
 	} else {
 		return 1;
 	}
+}
+
+
+void wordsToCurrency(char *word, char *currency){
 }
