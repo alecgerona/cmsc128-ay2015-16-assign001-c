@@ -256,13 +256,15 @@ int wordNumLite(char *conv){ //Switch statements containing all of the possible 
 }
 
 
-void wordsToCurrency(char *word, char *currency){
+char* wordsToCurrency(char *word, char *currency){
 	char actualWord[100];
 	char actualCurrency[100];
-	char wordcurrency[100];
+	static char wordcurrency[100];
 	strcpy(actualWord, word);
 	strcpy(actualCurrency, currency);
 	
 	sprintf(wordcurrency, "%s%d", actualCurrency,wordsToNum(actualWord));
-	printf("%s", wordcurrency);
+	return wordcurrency;
+
+
 }
