@@ -265,6 +265,26 @@ char* wordsToCurrency(char *word, char *currency){
 	
 	sprintf(wordcurrency, "%s%d", actualCurrency,wordsToNum(actualWord)); //sprintf() to combine a string and an integer or float to a string variable.
 	return wordcurrency;
+}
+
+void numberDelimited(int number, char delimiter, int jumps){
+	char numWord[100];
+	int count=0, i;
+
+	if (number > 1000000){
+		// return NULL;
+	}
+
+	sprintf(numWord, "%d", number);
+	for (i=0; i<100; i++){ //Counts how many digits are in the passed number.
+		if (numWord[i] == NULL){
+			printf("%d", i);
+			count=i;
+			break;
+		}
+	}
+
+	
 
 
 }
