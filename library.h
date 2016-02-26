@@ -266,25 +266,52 @@ char* wordsToCurrency(char *word, char *currency){
 	sprintf(wordcurrency, "%s%d", actualCurrency,wordsToNum(actualWord)); //sprintf() to combine a string and an integer or float to a string variable.
 	return wordcurrency;
 }
+char* strrev(char *str){ //A rough recreation of the strrev() of C that is lacking in Linux-based machines found at http://stackoverflow.com/questions/8534274/is-the-strrev-function-not-available-in-linux by user Sumit Naik
+	static char actualStr[100];
+	strcpy(actualStr, str);
+	int i = strlen(actualStr)-1,j=0;
+    char rev;
+    while(i>j){
+        rev = actualStr[i];
+        actualStr[i]= actualStr[j];
+        actualStr[j] = rev;
+        i--;
+        j++;
+    }
+    return actualStr;
+}
 
-void numberDelimited(int number, char delimiter, int jumps){
+
+char* numberDelimited(int number, char delimiter, int jumps){
 	char numWord[100];
+	static char delimWord[20];
 	int count=0, i;
+	int flag=0;
 
 	if (number > 1000000){
 		// return NULL;
 	}
 
-	sprintf(numWord, "%d", number);
+	sprintf(numWord, "%d", number); //Converts an integer into a string.
 	for (i=0; i<100; i++){ //Counts how many digits are in the passed number.
 		if (numWord[i] == NULL){
-			printf("%d", i);
-			count=i;
+			count=i-1;
 			break;
 		}
 	}
+	for (i=0; i<20; i++){
+		if(count<0) break;
+		delimWord[i] = numWord[count];
+		flag++;
+		if(flag%jumps==0){
+			delimWord[i+1] = delimiter;
+			i++;
+		}
+		count--;
+	}
+	return strrev(delimWord);
 
-	
 
 
 }
+
