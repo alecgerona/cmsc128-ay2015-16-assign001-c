@@ -259,11 +259,11 @@ int wordNumLite(char *conv){ //Switch statements containing all of the possible 
 char* wordsToCurrency(char *word, char *currency){
 	char actualWord[100];
 	char actualCurrency[100];
-	static char wordcurrency[100];
-	strcpy(actualWord, word);
+	static char wordcurrency[100]; //The string variable to be returned.
+	strcpy(actualWord, word); //Copies the passed string to an array with assigned bounds to make passing it easier to other functions
 	strcpy(actualCurrency, currency);
 	
-	sprintf(wordcurrency, "%s%d", actualCurrency,wordsToNum(actualWord));
+	sprintf(wordcurrency, "%s%d", actualCurrency,wordsToNum(actualWord)); //sprintf() to combine a string and an integer or float to a string variable.
 	return wordcurrency;
 
 
