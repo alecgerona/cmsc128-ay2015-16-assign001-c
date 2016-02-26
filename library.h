@@ -288,8 +288,8 @@ char* numberDelimited(int number, char delimiter, int jumps){
 	int count=0, i;
 	int flag=0;
 
-	if (number > 1000000){
-		// return NULL;
+	if (number > 1000000){ //Checks whether given number exceeeds a million.
+		return NULL;
 	}
 
 	sprintf(numWord, "%d", number); //Converts an integer into a string.
@@ -300,16 +300,16 @@ char* numberDelimited(int number, char delimiter, int jumps){
 		}
 	}
 	for (i=0; i<20; i++){
-		if(count<0) break;
-		delimWord[i] = numWord[count];
+		if(count<0) break; //Ends loop when the reverse traversal of the given number is finished.
+		delimWord[i] = numWord[count]; //Copies the contents of the given number in reverse.
 		flag++;
-		if(flag%jumps==0){
+		if(flag%jumps==0){ //Checks whether the current position given by the flags variable necessitates a delimiter if it's divisible by the jumps value
 			delimWord[i+1] = delimiter;
 			i++;
 		}
 		count--;
 	}
-	return strrev(delimWord);
+	return strrev(delimWord); //Since the copying started in reverse, the string should be reversed again upon returning.
 
 
 
