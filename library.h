@@ -33,7 +33,7 @@ void numToWords(char *num){
 		copy--;
 	}
 }
-void printWord(int place){
+void printWord(int place){ //Prints the words with respect to their places
 	switch (place){
 		case 7 :
 			printf("million ");
@@ -50,7 +50,7 @@ void printWord(int place){
 	}
 }
 
-void printNum(char num, char num2, int place){
+void printNum(char num, char num2, int place){ //Switch statements for all of the possible numbers to print except for the zero counters i.e. million etc.
 	if (num == '1' && place != 5 && place != 2){
 		printf("one ");
 	}
@@ -145,7 +145,7 @@ int wordstonum(char *word){
 	int flag = 0;
 
 	token = strtok(word, " ");
-	for (i=0; token!=NULL; i++){
+	for (i=0; token!=NULL; i++){ //Tokenizes the result to an array for easier access.
 		args[i]=token;
 		token = strtok(NULL, " ");
 		args[i+1]=NULL;
@@ -155,9 +155,9 @@ int wordstonum(char *word){
 	total = count;
 	while (count>=0){
 		
-		if (strcmp(args[count], "hundred") == 0){
+		if (strcmp(args[count], "hundred") == 0){ 
 			flag=0;
-			for (temp=count; temp<= total; temp++){
+			for (temp=count; temp<= total; temp++){ //Checks whether there is a thousand next to the hundred which then multiplies 100 to the current value.
 				if (strcmp(args[temp], "thousand") == 0){
 					num += 100000 * wordNumLite(args[count-1]);
 					count--;
@@ -165,8 +165,8 @@ int wordstonum(char *word){
 					break;
 				}
 			}
-			if (flag==0){
-				num += 100 * wordNumLite(args[count-1]);
+			if (flag==0){ //A simple flag check to determine whether the above condition already happened.
+				num += 100 * wordNumLite(args[count-1]); //Simply adds a hundred multiplied by the preceding number modifier.
 				count--;
 			}
 
@@ -194,7 +194,7 @@ int wordstonum(char *word){
 	return num;
 }
 
-int wordNumLite(char *conv){
+int wordNumLite(char *conv){ //Switch statements containing all of the possible numbers except the zero counters.
 	int num=0;
 	if (strcmp(conv, "one") == 0){
 		return 1;
