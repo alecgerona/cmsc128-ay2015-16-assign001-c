@@ -297,6 +297,7 @@ char* numberDelimited(int number, char delimiter, int jumps){
 		if (numWord[i] == NULL){
 			count=i-1;
 			break;
+			
 		}
 	}
 	for (i=0; i<20; i++){
